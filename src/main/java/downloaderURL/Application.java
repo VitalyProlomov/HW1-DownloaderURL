@@ -11,8 +11,9 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
+        FileDownloader fileDownloader = new FileDownloader();
         while (!input.equals("/exit")) {
-            ConsoleUtils.readCommand(input);
+            ConsoleUtils.readCommand(input, fileDownloader);
             input = scanner.nextLine();
         }
 

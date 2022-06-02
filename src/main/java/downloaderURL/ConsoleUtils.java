@@ -3,10 +3,10 @@ package downloaderURL;
 import java.io.File;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ConsoleUtils {
-    public static void readCommand(String line) {
-
+    public static void readCommand(String line, FileDownloader fileDownloader) {
         String command = line.split(" ")[0].toLowerCase(Locale.ROOT).trim();
 
         switch (command) {
@@ -27,7 +27,7 @@ public class ConsoleUtils {
                 }
                  */
                 String[] parameters = line.substring(command.length() + 1, line.length()).split(" ");
-                FileDownloader.load(parameters);
+                fileDownloader.load(parameters);
                 break;
 
             case "/dest":
@@ -37,7 +37,7 @@ public class ConsoleUtils {
                 }
 
                 String path = line.split(" ")[1];
-                FileDownloader.setDownloadPath(path);
+                fileDownloader.setDownloadPath(path);
                 break;
 
             case "/exit":

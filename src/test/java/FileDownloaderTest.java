@@ -14,21 +14,19 @@ public class FileDownloaderTest {
 
     public static String testingDirectoryPath = Path.of("").toAbsolutePath().toString();;
 
-    @Before
-    public void setTestingDirectoryPath() {
-        FileDownloader.setDownloadPath(testingDirectoryPath);
-    }
-
-
     @Test
-    public void shouldDownloadExistingInternetPhotoToCurrentFolder() throws MalformedURLException {
-        String url = Objects.requireNonNull(getClass().getResource("hqdefault.jpg")).toString();
+    public void fileDownloadershouldDownloadCorrectAmountOfBytes() {
+        FileDownloader fileDownloader = new FileDownloader();
+        String url = Objects.requireNonNull(getClass().getResource("/hqdefault.jpg")).toString();
 
-        FileDownloader.load(url);
+        File file = new File("D:\\HSE\\2nd course\\KPO\\[SECOND_MODULE]_Seminar_HW\\HW1(DownloaderURL)\\src\\test\\resources");
+        System.out.println(file.exists());
+        System.out.println(file.getTotalSpace());
 
-        File downloadedFile = new File(String.valueOf(getClass().getResource("hqdefault.jpg")));
+        File file2 = new File("/hqdefault");
+        System.out.println(file2.exists());
+        System.out.println(file2.getTotalSpace());
 
-        assertEquals(getClass().getResource("hqdefault.jpg")..getFile(), downloadedFile);
-
+        fileDownloader.load(url);
     }
 }
